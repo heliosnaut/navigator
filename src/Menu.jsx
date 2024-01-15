@@ -1,10 +1,10 @@
-import {Avatar, Typography,} from 'antd'
+import {Avatar, Typography, Divider,} from 'antd'
 import styled from './utils/styled'
 
 const { Text } = Typography;
 export default function Menu ({ envStateArr }) {
   const [env,] = envStateArr;
-  const listData = [
+  const listNasData = [
     {
       url: '5000',
       name: 'Synology',
@@ -77,6 +77,14 @@ export default function Menu ({ envStateArr }) {
     },
   ]
 
+  const listData = [
+    {
+      url:'https://github.com/heliosnaut',
+      name:'Github',
+      src:'gitHub.svg',
+    },
+  ]
+
   const LI = styled.li({
     display: "inline-block",
     width: "calc(100% / 10)",
@@ -91,9 +99,10 @@ export default function Menu ({ envStateArr }) {
     }`
   })
 
-  return <ul>
+  return <>
+    <ul>
     {
-      listData.map(({ url, src, name, }, index) => <LI
+      listNasData.map(({ url, src, name, }, index) => <LI
         onClick={() => {
           if (env === 1) origin = 'http://192.168.1.185:'
           if (env === 2) origin = 'http://100.86.149.153:'
@@ -107,4 +116,21 @@ export default function Menu ({ envStateArr }) {
       </LI>)
     }
   </ul>
+
+  <Divider orientation="left" style={{color:'blue', backgroundColor:'#ff0', }}>It's NAS up there.⬆⬆⬆</Divider>
+  
+  <ul>
+    {
+      listData.map(({ url, src, name, }, index) => <LI
+        onClick={() => window.open(url) }
+        data-url={url}
+        key={index} >
+        <Avatar size={100} shape="square" src={src} /><br />
+        <Text style={{ color: '#fff' }}>{name}</Text>
+      </LI>)
+    }
+  </ul>
+
+  </> 
+
 }
