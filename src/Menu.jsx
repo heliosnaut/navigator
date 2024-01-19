@@ -36,6 +36,11 @@ export default function Menu ({ envStateArr }) {
       src: 'audio.png',
     },
     {
+      url: '8000',
+      name: 'Musicn: MP3',
+      src: 'musicn.png'
+    },
+    {
       url: '5000/sunny-note/',
       name: 'Note Station',
       src: 'note.png'
