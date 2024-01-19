@@ -1,7 +1,7 @@
 import {Avatar, Typography, Divider,} from 'antd'
 import styled from './utils/styled'
 
-const { Text } = Typography;
+const { Text } = Typography
 export default function Menu ({ envStateArr }) {
   const [env,] = envStateArr;
   const listNasData = [
@@ -88,6 +88,11 @@ export default function Menu ({ envStateArr }) {
       name:'Github',
       src:'gitHub.svg',
     },
+    {
+      url:'https://pan.xunlei.com',
+      name:'Xunlei CloudDrive',
+      src:'xunlei.png',
+    },
   ]
 
   const LI = styled.li({
@@ -109,7 +114,8 @@ export default function Menu ({ envStateArr }) {
     {
       listNasData.map(({ url, src, name, }, index) => <LI
         onClick={() => {
-          if (env === 1) origin = 'http://192.168.1.185:'
+          let origin = 'http://192.168.1.185:'
+          
           if (env === 2) origin = 'http://100.86.149.153:'
 
           window.open(`${origin}${url}`)
@@ -135,7 +141,6 @@ export default function Menu ({ envStateArr }) {
       </LI>)
     }
   </ul>
-
   </> 
 
 }
