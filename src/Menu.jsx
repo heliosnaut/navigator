@@ -62,7 +62,7 @@ export default function Menu ({ envStateArr }) {
     },
     {
       url: '8888',
-      name: 'SendMail & 2Base64',
+      name: 'Widget Collection',
       src: 'sendmail.png'
     },
     {
