@@ -56,7 +56,7 @@ export default function Menu ({ envStateArr }) {
       src: 'alist.png'
     },
     {
-      url: '8887/menu.md',
+      url: '8004/menu.md',
       name: 'Technology Note',
       src: 'menu.jpg'
     },
