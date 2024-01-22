@@ -58,12 +58,12 @@ export default function Menu ({ envStateArr }) {
     {
       url: '8887/menu.md',
       name: 'Technology Note',
-      src: 'menu.png'
+      src: 'menu.jpg'
     },
     {
-      url: '8888',
+      url: '8003',
       name: 'Widget Collection',
-      src: 'sendmail.png'
+      src: 'collection.png'
     },
     {
       url: '5000/?launchApp=SYNO.SDS.DownloadStation.Application',
