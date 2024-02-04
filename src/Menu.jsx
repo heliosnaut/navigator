@@ -93,6 +93,11 @@ export default function Menu ({ envStateArr }) {
       name:'Xunlei CloudDrive',
       src:'xunlei.png',
     },
+    {
+      url: 'https://pan.quark.cn',
+      name: 'Quark CloudDrive',
+      src: 'quark.png',
+    },
   ]
 
   const LI = styled.li({
