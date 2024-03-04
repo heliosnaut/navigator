@@ -75,11 +75,11 @@ export default function Menu ({ envStateArr }) {
       name: 'Synology Drive',
       src: 'drive.png',
     },
-    // {
-    //   url: '5700',
-    //   name: 'QingLong',
-    //   src: 'qinglong.png'
-    // },
+    {
+      url: '8081',
+      name: 'Clash',
+      src: 'clash.png'
+    },
   ]
 
   const listData = [
