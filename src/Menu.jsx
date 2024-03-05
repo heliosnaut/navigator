@@ -1,10 +1,15 @@
-import {Avatar, Typography, Divider,} from 'antd'
+import { Avatar, Typography, Divider, } from 'antd'
 import styled from './utils/styled'
 
 const { Text } = Typography
-export default function Menu ({ envStateArr }) {
+export default function Menu({ envStateArr }) {
   const [env,] = envStateArr;
   const listNasData = [
+    {
+      url: '2342',
+      name: 'PhotoPrism',
+      src: 'photoprism.svg'
+    },
     {
       url: '5000',
       name: 'Synology',
@@ -16,54 +21,14 @@ export default function Menu ({ envStateArr }) {
       src: 'photos.png',
     },
     {
-      url: '2342',
-      name: 'PhotoPrism',
-      src: 'photoprism.svg'
-    },
-    {
       url: '5000/?launchApp=SYNO.SDS.VideoStation.AppInstance',
       name: 'Video Station',
       src: 'video.png',
     },
     {
-      url: '8096',
-      name: 'Jellyfin',
-      src: 'jellyfin.png'
-    },
-    {
       url: '5000/?launchApp=SYNO.SDS.AudioStation.Application',
       name: 'Audio Station',
       src: 'audio.png',
-    },
-    {
-      url: '8000',
-      name: 'Musicn: MP3',
-      src: 'musicn.png'
-    },
-    {
-      url: '5000/sunny-note/',
-      name: 'Note Station',
-      src: 'note.png'
-    },
-    {
-      url: '8083',
-      name: 'Calibre-web',
-      src: 'calibre-web.png'
-    },
-    {
-      url: '5244',
-      name: 'Alist',
-      src: 'alist.png'
-    },
-    {
-      url: '8004/menu.md',
-      name: 'Technology Note',
-      src: 'menu.jpg'
-    },
-    {
-      url: '8003',
-      name: 'Widget Collection',
-      src: 'collection.png'
     },
     {
       url: '5000/?launchApp=SYNO.SDS.DownloadStation.Application',
@@ -76,22 +41,62 @@ export default function Menu ({ envStateArr }) {
       src: 'drive.png',
     },
     {
+      url: '5000/sunny-note/',
+      name: 'Note Station',
+      src: 'note.png'
+    },
+    {
+      url: '5244',
+      name: 'Alist',
+      src: 'alist.png'
+    },
+    {
+      url: '8000',
+      name: 'Musicn: MP3',
+      src: 'musicn.png'
+    },
+    {
+      url: '8003',
+      name: 'Widget Collection',
+      src: 'collection.png'
+    },
+    {
+      url: '8004/menu.md',
+      name: 'Technology Note',
+      src: 'menu.jpg'
+    },
+    {
+      url: '8005',
+      name: 'QRcode Scan',
+      src: 'qrcode.png'
+    },
+    {
       url: '8081',
-      name: 'Clash',
+      name: 'Clash Dashboard',
       src: 'clash.png'
+    },
+    {
+      url: '8083',
+      name: 'Calibre-web',
+      src: 'calibre-web.png'
+    },
+    {
+      url: '8096',
+      name: 'Jellyfin',
+      src: 'jellyfin.png'
     },
   ]
 
   const listData = [
     {
-      url:'https://github.com/heliosnaut',
-      name:'Github',
-      src:'gitHub.svg',
+      url: 'https://github.com/heliosnaut',
+      name: 'Github',
+      src: 'gitHub.svg',
     },
     {
-      url:'https://pan.xunlei.com',
-      name:'Xunlei CloudDrive',
-      src:'xunlei.png',
+      url: 'https://pan.xunlei.com',
+      name: 'Xunlei CloudDrive',
+      src: 'xunlei.png',
     },
     {
       url: 'https://pan.quark.cn',
@@ -116,36 +121,36 @@ export default function Menu ({ envStateArr }) {
 
   return <>
     <ul>
-    {
-      listNasData.map(({ url, src, name, }, index) => <LI
-        onClick={() => {
-          let origin = 'http://192.168.1.185:'
-          
-          if (env === 2) origin = 'http://100.86.149.153:'
+      {
+        listNasData.map(({ url, src, name, }, index) => <LI
+          onClick={() => {
+            let origin = 'http://192.168.1.185:'
 
-          window.open(`${origin}${url}`)
-        }}
-        data-url={url}
-        key={index} >
-        <Avatar size={100} shape="square" src={src} /><br />
-        <Text style={{ color: '#fff' }}>{name}</Text>
-      </LI>)
-    }
-  </ul>
+            if (env === 2) origin = 'http://100.86.149.153:'
 
-  <Divider orientation="left" style={{color:'blue', backgroundColor:'#ff0', }}>It's NAS up there.⬆⬆⬆</Divider>
-  
-  <ul>
-    {
-      listData.map(({ url, src, name, }, index) => <LI
-        onClick={() => window.open(url) }
-        data-url={url}
-        key={index} >
-        <Avatar size={100} shape="square" src={src} /><br />
-        <Text style={{ color: '#fff' }}>{name}</Text>
-      </LI>)
-    }
-  </ul>
-  </> 
+            window.open(`${origin}${url}`)
+          }}
+          data-url={url}
+          key={index} >
+          <Avatar size={100} shape="square" src={src} /><br />
+          <Text style={{ color: '#fff' }}>{name}</Text>
+        </LI>)
+      }
+    </ul>
+
+    <Divider orientation="left" style={{ color: 'blue', backgroundColor: '#ff0', }}>It's NAS up there.⬆⬆⬆</Divider>
+
+    <ul>
+      {
+        listData.map(({ url, src, name, }, index) => <LI
+          onClick={() => window.open(url)}
+          data-url={url}
+          key={index} >
+          <Avatar size={100} shape="square" src={src} /><br />
+          <Text style={{ color: '#fff' }}>{name}</Text>
+        </LI>)
+      }
+    </ul>
+  </>
 
 }
