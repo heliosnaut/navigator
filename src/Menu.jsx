@@ -67,6 +67,7 @@ export default function Menu({ envStateArr }) {
     },
     {
       url: '8005',
+      https: true,
       name: 'QRcode Scan',
       src: 'qrcode.png'
     },
@@ -122,11 +123,12 @@ export default function Menu({ envStateArr }) {
   return <>
     <ul>
       {
-        listNasData.map(({ url, src, name, }, index) => <LI
+        listNasData.map(({ url, https=false, src, name, }, index) => <LI
           onClick={() => {
-            let origin = 'http://192.168.1.185:'
+            const protocol = `http${https ? 's' : ''}`
+            let origin = `${protocol}://192.168.1.185:`
 
-            if (env === 2) origin = 'http://100.86.149.153:'
+            if (env === 2) origin = `${protocol}://100.86.149.153:`
 
             window.open(`${origin}${url}`)
           }}
