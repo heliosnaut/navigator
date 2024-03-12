@@ -1,4 +1,4 @@
-import { Avatar, Typography, Divider, } from 'antd'
+import { Avatar, Typography, Divider, Flex } from 'antd'
 import styled from './utils/styled'
 
 const { Text } = Typography
@@ -49,6 +49,11 @@ export default function Menu({ envStateArr }) {
       url: '5244',
       name: 'Alist',
       src: 'alist.png'
+    },
+    {
+      url: '5700',
+      name: 'Qinglong',
+      src: 'qinglong.png'
     },
     {
       url: '8000',
@@ -106,24 +111,26 @@ export default function Menu({ envStateArr }) {
     },
   ]
 
-  const LI = styled.li({
-    display: "inline-block",
-    width: "calc(100% / 10)",
-    lineHeight: "40px",
-    marginBottom: "20px",
-    paddingTop: "20px",
+  const Div = styled.div({
+    // display: "inline-block",
+    // width: "calc(100% / 10)",
+    // lineHeight: "30px",
+    // marginBottom: "20px",
+    // paddingTop: "20px",
     textAlign: "center",
     borderRadius: "6px",
-    cursor: "pointer",
     "&": `hover{
+      cursor: pointer;
+      opacity: .8;
       background-color: rgba(0, 0, 0, .1);
+      transition: all .5s;
     }`
   })
 
   return <>
-    <ul>
+    <Flex wrap="wrap" gap="large" style={{ margin: '20px' }}>
       {
-        listNasData.map(({ url, https=false, src, name, }, index) => <LI
+        listNasData.map(({ url, https = false, src, name, }, index) => <Div
           onClick={() => {
             const protocol = `http${https ? 's' : ''}`
             let origin = `${protocol}://192.168.1.185:`
@@ -136,23 +143,23 @@ export default function Menu({ envStateArr }) {
           key={index} >
           <Avatar size={100} shape="square" src={src} /><br />
           <Text style={{ color: '#fff' }}>{name}</Text>
-        </LI>)
+        </Div>)
       }
-    </ul>
+    </Flex >
 
     <Divider orientation="left" style={{ color: 'blue', backgroundColor: '#ff0', }}>It's NAS up there.⬆⬆⬆</Divider>
 
-    <ul>
+    <Flex wrap="wrap" gap="large" style={{ margin: '20px' }}>
       {
-        listData.map(({ url, src, name, }, index) => <LI
+        listData.map(({ url, src, name, }, index) => <Div
           onClick={() => window.open(url)}
           data-url={url}
           key={index} >
           <Avatar size={100} shape="square" src={src} /><br />
           <Text style={{ color: '#fff' }}>{name}</Text>
-        </LI>)
+        </Div>)
       }
-    </ul>
+    </Flex >
   </>
 
 }
