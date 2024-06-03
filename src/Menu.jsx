@@ -1,15 +1,12 @@
+import { useState, useEffect, } from 'react';
 import { Avatar, Typography, Divider, Flex } from 'antd'
 import styled from './utils/styled'
 
 const { Text } = Typography
 export default function Menu({ envStateArr }) {
   const [env,] = envStateArr;
+  const [sensitive, setSensitive] = useState(true)
   const listNasData = [
-    {
-      url: '2342',
-      name: 'PhotoPrism',
-      src: 'photoprism.svg'
-    },
     {
       url: '5000',
       name: 'Synology',
@@ -19,11 +16,6 @@ export default function Menu({ envStateArr }) {
       url: '5000/?launchApp=SYNO.Foto.AppInstance',
       name: 'Synology Photos',
       src: 'photos.png',
-    },
-    {
-      url: '5000/?launchApp=SYNO.SDS.VideoStation.AppInstance',
-      name: 'Video Station',
-      src: 'video.png',
     },
     {
       url: '5000/?launchApp=SYNO.SDS.AudioStation.Application',
@@ -87,9 +79,22 @@ export default function Menu({ envStateArr }) {
       src: 'calibre-web.png'
     },
     {
+      url: '2342',
+      name: 'PhotoPrism',
+      src: 'photoprism.svg',
+      sensitive,
+    },
+    {
+      url: '5000/?launchApp=SYNO.SDS.VideoStation.AppInstance',
+      name: 'Video Station',
+      src: 'video.png',
+      sensitive,
+    },
+    {
       url: '8096',
       name: 'Jellyfin',
-      src: 'jellyfin.png'
+      src: 'jellyfin.png',
+      sensitive,
     },
   ]
 
@@ -127,16 +132,20 @@ export default function Menu({ envStateArr }) {
     }`
   })
 
+  useEffect(() => {
+    if (window.location.search.includes('all')) setSensitive(false)
+  }, [])
+
   return <>
     <Flex wrap="wrap" gap="large" style={{ margin: '20px' }}>
       {
-        listNasData.map(({ url, https = false, src, name, }, index) => <Div
+        listNasData.map(({ url, https = false, src, name, sensitive = false }, index) => <Div
+          style={{ visibility: sensitive ? 'hidden' : 'visible' }}
           onClick={() => {
             const protocol = `http${https ? 's' : ''}`
             let origin = `${protocol}://192.168.1.185:`
 
             if (env === 2) origin = `${protocol}://100.86.149.153:`
-
             window.open(`${origin}${url}`)
           }}
           data-url={url}
