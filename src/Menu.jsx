@@ -105,13 +105,18 @@ export default function Menu({ envStateArr }) {
       src: 'gitHub.svg',
     },
     {
+      url: 'https://drive.google.com/drive/home',
+      name: 'GoogleDrive',
+      src: 'google.png',
+    },
+    {
       url: 'https://pan.xunlei.com',
-      name: 'Xunlei CloudDrive',
+      name: 'XunleiDrive',
       src: 'xunlei.png',
     },
     {
       url: 'https://pan.quark.cn',
-      name: 'Quark CloudDrive',
+      name: 'QuarkDrive',
       src: 'quark.png',
     },
   ]
