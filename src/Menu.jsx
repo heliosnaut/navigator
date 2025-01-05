@@ -3,6 +3,7 @@ import { Avatar, Typography, Divider, Flex } from 'antd'
 import styled from './utils/styled'
 
 const { Text } = Typography
+const boxWidth = 100
 export default function Menu({ envStateArr }) {
   const [env,] = envStateArr;
   const [sensitive, setSensitive] = useState(true)
@@ -155,8 +156,8 @@ export default function Menu({ envStateArr }) {
           }}
           data-url={url}
           key={index} >
-          <Avatar size={100} shape="square" src={src} /><br />
-          <Text style={{ color: '#fff' }}>{name}</Text>
+          <Avatar size={boxWidth} shape="square" src={src} /><br />
+          <Text style={{ color: '#fff', width: `${boxWidth}px`, display: 'inline-block' }}>{name}</Text>
         </Div>)
       }
     </Flex >
@@ -170,7 +171,7 @@ export default function Menu({ envStateArr }) {
           data-url={url}
           key={index} >
           <Avatar size={100} shape="square" src={src} /><br />
-          <Text style={{ color: '#fff' }}>{name}</Text>
+          <Text style={{ color: '#fff', width: `${boxWidth}px`, display: 'inline-block' }}>{name}</Text>
         </Div>)
       }
     </Flex >
