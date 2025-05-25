@@ -91,12 +91,6 @@ export default function Menu({ envStateArr }) {
       src: 'video.png',
       sensitive,
     },
-    {
-      url: '8096',
-      name: 'Jellyfin',
-      src: 'jellyfin.png',
-      sensitive,
-    },
   ]
 
   const listData = [
