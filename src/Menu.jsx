@@ -4,6 +4,17 @@ import styled from './utils/styled'
 
 const { Text } = Typography
 const boxWidth = 100
+const sitSet = {
+  nas: { 
+    local: '192.168.1.185',
+    remote: '100.86.149.153',
+  },
+  mi:{
+    local: '192.168.1.12',
+    remote:'100.83.194.123',
+  }
+}
+
 export default function Menu({ envStateArr }) {
   const [env,] = envStateArr;
   const [sensitive, setSensitive] = useState(true)
@@ -37,6 +48,12 @@ export default function Menu({ envStateArr }) {
       url: '5000/sunny-note/',
       name: 'Note Station',
       src: 'note.png'
+    },
+    {
+      url: '5244',
+      name: 'MI11',
+      device: 'mi',
+      src: 'mi11ultra-alist.png'
     },
     {
       url: '5244',
@@ -139,13 +156,19 @@ export default function Menu({ envStateArr }) {
   return <>
     <Flex wrap="wrap" gap="large" style={{ margin: '20px' }}>
       {
-        listNasData.map(({ url, https = false, src, name, sensitive = false }, index) => <Div
+        listNasData.map(({ 
+          url, 
+          https = false, 
+          src, 
+          name, 
+          device='nas',
+          sensitive = false 
+        }, index) => <Div
           style={{ visibility: sensitive ? 'hidden' : 'visible' }}
           onClick={() => {
             const protocol = `http${https ? 's' : ''}`
-            let origin = `${protocol}://192.168.1.185:`
+            const origin = `${protocol}://${sitSet[device][env === 2 ? 'remote' : 'local']}:`;
 
-            if (env === 2) origin = `${protocol}://100.86.149.153:`
             window.open(`${origin}${url}`)
           }}
           data-url={url}
@@ -156,7 +179,7 @@ export default function Menu({ envStateArr }) {
       }
     </Flex >
 
-    <Divider orientation="left" style={{ color: 'blue', backgroundColor: '#ff0', }}>It's NAS up there.⬆⬆⬆</Divider>
+    <Divider orientation="left" style={{ color: 'blue', backgroundColor: '#ff0', }}>It's CloudDrive down there.⬇⬇⬇</Divider>
 
     <Flex wrap="wrap" gap="large" style={{ margin: '20px' }}>
       {
