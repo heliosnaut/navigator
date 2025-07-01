@@ -30,6 +30,11 @@ export default function Menu({ envStateArr }) {
       src: 'photos.png',
     },
     {
+      url: '2000',
+      name: 'Family Photos',
+      src: 'family.png',
+    },
+    {
       url: '5000/?launchApp=SYNO.SDS.AudioStation.Application',
       name: 'Audio Station',
       src: 'audio.png',
